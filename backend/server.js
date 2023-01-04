@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const connectDB = require("./config/connectDB");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute");
+const errorHandler = require("./middleWares/errorHandler");
 
 dotenv.config();
 
@@ -23,6 +24,9 @@ app.use("/api/users", userRoute);
 app.get("/", (req, res) => {
   res.send("Server is running on 5000");
 });
+
+// ERROR Handle
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
