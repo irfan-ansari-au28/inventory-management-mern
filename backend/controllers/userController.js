@@ -7,6 +7,7 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
 };
 
+// Register user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -64,6 +65,13 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+// Login user
+
+const loginUser = asyncHandler((req, res) => {
+  res.send("Login user");
+});
+
 module.exports = {
   registerUser,
+  loginUser,
 };
