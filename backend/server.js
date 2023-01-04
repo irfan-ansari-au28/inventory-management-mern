@@ -6,6 +6,7 @@ const connectDB = require("./config/connectDB");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute");
 const errorHandler = require("./middleWares/errorHandler");
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
