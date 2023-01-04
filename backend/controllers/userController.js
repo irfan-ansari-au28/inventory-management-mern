@@ -1,5 +1,3 @@
-const bcrypt = require("bcryptjs");
-
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 
@@ -24,15 +22,11 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exits");
   }
 
-  // Encrypt the password before saving to DB
-  const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(password, salt);
-
   // Create a new user
   const user = await User.create({
     name,
     email,
-    password: hashedPassword,
+    password,
   });
 
   if (user) {
