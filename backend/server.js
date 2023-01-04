@@ -4,7 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/connectDB");
 const mongoose = require("mongoose");
-const { urlencoded } = require("body-parser");
+const userRoute = require("./routes/userRoute");
+
 dotenv.config();
 
 const app = express();
@@ -14,6 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+
+// Routes Middleware
+app.use("/api/users", userRoute);
 
 // Routes
 app.get("/", (req, res) => {
