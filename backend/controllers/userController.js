@@ -71,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
+
   // Basic validation
   if (!email || !password) {
     res.status(400);
@@ -80,7 +80,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Check if user exists
   const user = await User.findOne({ email });
-  console.log("---user--", user);
 
   if (!user) {
     res.status(400);
@@ -89,7 +88,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // User exists, check if password is correct
   const passwordIsCorrect = await bcrypt.compare(password, user.password);
-  console.log(passwordIsCorrect, "passwordIsCorrect");
 
   // Generate jwt token
   const token = generateToken(user._id);
@@ -120,7 +118,21 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// Logout
+
+const logout = asyncHandler(async (req, res) => {
+  res.cookie("token", "", {
+    path: "/",
+    httpOnly: true,
+    expires: new Date(0), // expires
+    sameSite: "none",
+    secure: false,
+  });
+  return res.status(200).json({ msg: "Logged out successfully" });
+});
+
 module.exports = {
   registerUser,
   loginUser,
+  logout,
 };
