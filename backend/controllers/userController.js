@@ -154,7 +154,17 @@ const getUser = asyncHandler(async (req, res) => {
 
 // Logged in Status
 const loginStatus = asyncHandler(async (req, res) => {
-  res.send("loggedinstatus");
+  const token = req.cookies.token;
+  if (!token) {
+    res.json(false);
+  }
+  // Verify token
+  const verified = jwt.verify(token, process.env.JWT_SECRET);
+  if (verified) {
+    res.json(true);
+  } else {
+    res.json(false);
+  }
 });
 
 module.exports = {
