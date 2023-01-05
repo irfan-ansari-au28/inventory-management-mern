@@ -131,8 +131,15 @@ const logout = asyncHandler(async (req, res) => {
   return res.status(200).json({ msg: "Logged out successfully" });
 });
 
+// Get user data
+
+const getUser = asyncHandler(async (req, res) => {
+  res.send("getUserr");
+});
+
 module.exports = {
   registerUser,
   loginUser,
   logout,
+  getUser,
 };
