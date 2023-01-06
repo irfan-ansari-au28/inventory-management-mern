@@ -9,10 +9,13 @@ const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
 const path = require("path");
+const connectCloudinary = require("./config/connectCloudinary");
 
 dotenv.config();
 
 const app = express();
+
+// Config cloudinary
 
 // Middleware
 app.use(express.json());
@@ -41,6 +44,7 @@ const startServer = async () => {
   try {
     // Connect to DB
     await connectDB();
+    await connectCloudinary();
     // Server
     app.listen(PORT, () => {
       console.log(`+++++++ Server is running on port ${PORT} ++++++++`);
