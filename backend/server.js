@@ -8,6 +8,7 @@ const errorHandler = require("./middleWares/errorHandler");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
+const path = require("path");
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes Middleware
 app.use("/api/users", userRoute);
