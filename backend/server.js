@@ -10,6 +10,7 @@ const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
 const path = require("path");
 const connectCloudinary = require("./config/connectCloudinary");
+const contactUs = require("./routes/contactRoute");
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Routes Middleware
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
+app.use("/api/contact", contactUs);
 
 // Routes
 app.get("/", (req, res) => {
