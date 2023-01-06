@@ -3,6 +3,8 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+const Token = require("../models/tokenModel");
+const sendEmail = require("../utils/sendEmail");
 // Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
@@ -231,8 +233,15 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) {
     res.status(400);
-    throw new Error("User not found");
+    throw new Error("User does not exist");
   }
+
+  // Delete token if it exists in DB
+  const token = await Token.findOne({ user_id: user._id });
+  if (token) {
+    await token.deleteOne();
+  }
+
   // Create reset token
   const resetToken = crypto.randomBytes(32).toString("hex") + user._id;
 
@@ -247,7 +256,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
     userId: user._id,
     token: hashedToken,
     createdAt: Date.now(),
-    expiresAt: Date.now + 30 * (60 * 1000),
+    expiresAt: Date.now() + 30 * (60 * 1000),
   }).save();
 
   // Create reset url
@@ -255,7 +264,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   // Create reset email
   const message = `
-  <h4>Hello ${user.name}</h4>
+  <h4>Hello ${user.name},</h4>
   <p>Please use the below url to reset your password</p>
   <p>This reset link is valid for only 30 minutes.</p>
   <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
@@ -263,10 +272,21 @@ const forgotPassword = asyncHandler(async (req, res) => {
   <p>Regards...</p>
   <p>Team Inventory</p>
   `;
-  // res.json({
-  //   a: resetToken,
-  //   b: hashedToken,
-  // });
+
+  const subject = "Password Reset Request";
+  const send_to = user.email;
+  const sent_from = process.env.EMAIL_USER;
+
+  try {
+    await sendEmail(sent_from, send_to, subject, message);
+    res.status(200).json({
+      success: true,
+      message: "Reset Email Sent",
+    });
+  } catch (error) {
+    res.status(500);
+    throw new Error("Email not sent, please try again");
+  }
 });
 
 module.exports = {

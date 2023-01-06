@@ -14,7 +14,7 @@ const tokenSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
-  expiredAr: {
+  expiresAt: {
     type: Date,
     required: true,
   },
