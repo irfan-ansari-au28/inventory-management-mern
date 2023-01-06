@@ -76,7 +76,7 @@ const getProduct = asyncHandler(async (req, res) => {
   res.status(200).json(product);
 });
 
-// Get a product by its id
+// Delete product
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
@@ -92,9 +92,77 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.status(200).json({ msg: "product deleted successfully" });
 });
 
+// Update product
+
+const updateProduct = asyncHandler(async (req, res) => {
+  const { name, sku, category, quantity, price, description } = req.body;
+  const { id } = req.params;
+
+  const product = await Product.findById(id);
+
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+  // Match product to its user
+  if (product.user.toString() !== req.user.id) {
+    res.status(404);
+    throw new Error("User not authorized");
+  }
+
+  // Handle image upload
+  let fileData = {};
+  if (req.file) {
+    // Save image to cloudinary
+    let uploadedFile;
+
+    try {
+      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+        folder: "Inventory app",
+        resource_type: "image",
+      });
+      console.log(uploadedFile, "-----file-----");
+    } catch (error) {
+      res.status(500);
+      throw new Error("Image could not be uploaded");
+    }
+
+    fileData = {
+      fileName: req.file.originalname,
+      filePath: uploadedFile.secure_url,
+      fileType: req.file.mimetype,
+      fileSize: formatBytes(req.file.size),
+    };
+  }
+
+  // Update the product
+  const updatedProduct = await Product.findByIdAndUpdate(
+    { _id: id },
+    {
+      name,
+      sku,
+      category,
+      quantity,
+      price,
+      description,
+      image: Object.keys(fileData).length === 0 ? product.image : fileData,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.status(200).json({
+    updatedProduct,
+    msg: "Product updated successfully",
+  });
+});
+
 module.exports = {
   createProduct,
   getProducts,
   getProduct,
   deleteProduct,
+  updateProduct,
 };
