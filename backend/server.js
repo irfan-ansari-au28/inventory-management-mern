@@ -4,9 +4,10 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/connectDB");
 const mongoose = require("mongoose");
-const userRoute = require("./routes/userRoute");
 const errorHandler = require("./middleWares/errorHandler");
 const cookieParser = require("cookie-parser");
+const userRoute = require("./routes/userRoute");
+const productRoute = require("./routes/productRoute");
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cors());
 
 // Routes Middleware
 app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
 
 // Routes
 app.get("/", (req, res) => {
