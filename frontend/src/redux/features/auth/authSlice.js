@@ -1,11 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-empty-pattern */
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: false,
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {},
 });
