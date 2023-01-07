@@ -6,11 +6,31 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./pages/auth/Login";
+import Forgot from "./pages/auth/Forgot";
+import Register from "./pages/auth/Register";
+import Reset from "./pages/auth/Reset";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/forgot",
+    element: <Forgot />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/resetpassword/:resetToken",
+    element: <Reset />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
