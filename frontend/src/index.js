@@ -10,6 +10,9 @@ import Login from "./pages/auth/Login";
 import Forgot from "./pages/auth/Forgot";
 import Register from "./pages/auth/Register";
 import Reset from "./pages/auth/Reset";
+import Sidebar from "./components/sidebar/Sidebar";
+import Layout from "./layouts/Layout";
+import Dashboard from "./components/dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,16 @@ const router = createBrowserRouter([
   {
     path: "/resetpassword/:resetToken",
     element: <Reset />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <Sidebar>
+        <Layout>
+          <Dashboard></Dashboard>
+        </Layout>
+      </Sidebar>
+    ),
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
