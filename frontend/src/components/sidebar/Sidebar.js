@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RiProductHuntLine } from "react-icons/ri";
 import SidebarItem from "./SidebarItem";
@@ -6,8 +6,8 @@ import menu from "../../data/sidebar";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggle = () => setIsOpen(!isOpen);
   const navigate = useNavigate();
   const goHome = () => {
     navigate("/");

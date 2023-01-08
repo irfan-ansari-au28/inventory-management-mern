@@ -13,6 +13,8 @@ import Reset from "./pages/auth/Reset";
 import Sidebar from "./components/sidebar/Sidebar";
 import Layout from "./layouts/Layout";
 import Dashboard from "./components/dashboard/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,7 @@ root.render(
         <App />
       </Provider>
     </RouterProvider>
+    <ToastContainer />
   </React.StrictMode>
 );
 
