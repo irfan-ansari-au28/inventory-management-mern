@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ShowOnLogin, ShowOnLogout } from "../../components/protect/HiddenLink";
 
 const Home = () => {
   return (
@@ -9,15 +10,27 @@ const Home = () => {
           <nav className="flex items-center justify-between">
             <div>LOGO</div>
             <div className="flex items-center justify-center">
-              <button className="ml-4 mt-6 rounded-lg border-2 border-solid bg-blue-600  px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-blue-500 focus:outline-none  lg:w-auto">
-                <Link to="/register">Register</Link>
-              </button>
-              <button className="border-1 border-1 border-1 border-1 ml-4 mt-6 rounded-lg border-2  border-solid border-slate-800 bg-white px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-gray-800 hover:bg-blue-500 hover:text-white focus:outline-none lg:w-auto">
-                <Link to="/login">Login</Link>
-              </button>
-              {/* <button className="border-1 border-1 ml-4 mt-6 rounded-lg border-2 border-solid border-slate-800 bg-white  px-6 py-2.5 text-center text-sm font-medium capitalize leading-5  text-gray-800 hover:bg-blue-500 hover:text-white  focus:outline-none lg:w-auto">
-                <Link to="/dashboard">Dashboard</Link>
-              </button> */}
+              <ShowOnLogout>
+                <Link to="/register">
+                  <button className="ml-4 mt-6 rounded-lg border-2 border-solid bg-blue-600  px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-white hover:bg-blue-500 focus:outline-none  lg:w-auto">
+                    Register
+                  </button>
+                </Link>
+              </ShowOnLogout>
+              <ShowOnLogout>
+                <Link to="/login">
+                  <button className="border-1 border-1 border-1 border-1 ml-4 mt-6 rounded-lg border-2  border-solid border-slate-800 bg-white px-6 py-2.5 text-center text-sm font-medium capitalize leading-5 text-gray-800 hover:bg-blue-500 hover:text-white focus:outline-none lg:w-auto">
+                    Login
+                  </button>
+                </Link>
+              </ShowOnLogout>
+              <ShowOnLogin>
+                <Link to="/dashboard">
+                  <button className="border-1 border-1 ml-4 mt-6 rounded-lg border-2 border-solid border-slate-800 bg-white  px-6 py-2.5 text-center text-sm font-medium capitalize leading-5  text-gray-800 hover:bg-blue-500 hover:text-white  focus:outline-none lg:w-auto">
+                    Dashboard
+                  </button>
+                </Link>
+              </ShowOnLogin>
             </div>
           </nav>
           <div className="my-16 flex flex-col items-center justify-center">
