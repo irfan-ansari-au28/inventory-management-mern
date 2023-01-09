@@ -15,6 +15,7 @@ import { registerUser, validateEmail } from "../../services/authService";
 import { useDispatch } from "react-redux";
 import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 import Loader from "../../loader/Loader";
+import BackgroundImage from "../../components/common/BackgroundImage";
 
 const initialState = {
   name: "",
@@ -70,6 +71,12 @@ const Register = () => {
   return (
     <>
       <div className="container mx-auto p-4">
+        <BackgroundImage
+          src={
+            "https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80"
+          }
+          alt={"night-sky"}
+        />
         {isLoading && <Loader />}
 
         <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-2/4 -translate-x-2/4">
