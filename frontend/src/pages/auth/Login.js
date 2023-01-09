@@ -94,9 +94,19 @@ const Login = () => {
                     label="Password"
                     size="lg"
                   />
-                  <div className="-ml-2.5">
+                  {/* <div className="-ml-2.5">
                     <Checkbox label="Remember Me" />
-                  </div>
+                  </div> */}
+                  <Link to="/forgot">
+                    <Typography
+                      as="span"
+                      variant="small"
+                      color="blue"
+                      className="ml-1 underline"
+                    >
+                      Forgot Password
+                    </Typography>
+                  </Link>
                 </CardBody>
                 <CardFooter className="pt-0">
                   <Button type="submit" variant="gradient" fullWidth>
