@@ -15,6 +15,7 @@ import Layout from "./layouts/Layout";
 import Dashboard from "./components/dashboard/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddProduct from "./pages/addProduct/addProduct";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,16 @@ const router = createBrowserRouter([
       <Sidebar>
         <Layout>
           <Dashboard></Dashboard>
+        </Layout>
+      </Sidebar>
+    ),
+  },
+  {
+    path: "/add-product",
+    element: (
+      <Sidebar>
+        <Layout>
+          <AddProduct />
         </Layout>
       </Sidebar>
     ),

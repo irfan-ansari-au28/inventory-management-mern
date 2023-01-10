@@ -65,7 +65,7 @@ const AddProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <h3 className="--mt">Add New Product</h3>
+      <h3>Add New Product</h3>
       <ProductForm
         product={product}
         productImage={productImage}
