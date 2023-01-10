@@ -31,7 +31,7 @@ const ProductForm = ({
                   <div className="w-80 h-60 mr-4 flex-none rounded-xl border overflow-hidden">
                     <img
                       className="w-80 h-60 mr-4 object-cover"
-                      src={productImage}
+                      src={imagePreview}
                       alt="Avatar Upload"
                     />
                   </div>

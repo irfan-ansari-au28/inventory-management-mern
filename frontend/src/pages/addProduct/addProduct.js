@@ -34,7 +34,9 @@ const AddProduct = () => {
 
   const handleImageChange = (e) => {
     setProductImage(e.target.files[0]);
+    console.log("productImage", productImage);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
+    console.log("imagePreview", imagePreview);
   };
 
   const generateKSKU = (category) => {
