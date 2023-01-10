@@ -13,18 +13,24 @@ const initialState = {
 };
 
 // Create new product
-export const createProduct = createAsyncThunk(async (formData, thunkAPI) => {
-  try {
-    return await productService.createProduct(formData);
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    console.log(message);
-    return thunkAPI.rejectWithValue(message);
+export const createProduct = createAsyncThunk(
+  "products/create",
+  async (formData, thunkAPI) => {
+    try {
+      console.log("formdata-fromslice", formData);
+      return await productService.createProduct(formData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      console.log(message);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 const productSlice = createSlice({
   name: "product",
@@ -43,7 +49,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        console.log("payload", action.payload);
+        console.log("payload-extra", action.payload);
         state.products = [...state.products, action.payload];
         toast.success("Product added successfully");
       })

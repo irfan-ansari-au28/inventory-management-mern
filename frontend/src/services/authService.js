@@ -40,6 +40,10 @@ export const loginUser = async (userData) => {
     if (response.statusText === "OK") {
       toast.success("Login Successful...");
     }
+    // Save token in local storage
+    const token = response.data.token;
+    localStorage.setItem("token", token);
+
     return response.data;
   } catch (error) {
     const message =
@@ -53,6 +57,7 @@ export const loginUser = async (userData) => {
 // Logout User
 export const logoutUser = async () => {
   try {
+    localStorage.removeItem("token");
     await axios.get(`${BACKEND_URL}/api/users/logout`);
   } catch (error) {
     const message =

@@ -26,10 +26,10 @@ app.use(
     optionSuccessStatus: 200,
   })
 );
-app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

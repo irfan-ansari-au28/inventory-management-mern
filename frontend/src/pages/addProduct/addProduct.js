@@ -55,9 +55,16 @@ const AddProduct = () => {
     formData.append("description", description);
     formData.append("image", productImage);
 
-    console.log(...formData);
+    const newData = {};
 
-    await dispatch(createProduct(formData));
+    console.log("pl", formData);
+    for (var pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+      newData[pair[0]] = pair[1];
+    }
+    console.log("new", newData);
+
+    await dispatch(createProduct(newData));
 
     navigate("/dashboard");
   };
