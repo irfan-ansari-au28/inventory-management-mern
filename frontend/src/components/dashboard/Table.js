@@ -10,7 +10,7 @@ import { GrView, GrEdit, GrTrash } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { Spinner } from "../../loader/Loader";
 
-export function Tables({ products, isLoading }) {
+export function Tables({ filteredProducts, isLoading }) {
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
@@ -21,7 +21,7 @@ export function Tables({ products, isLoading }) {
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           {isLoading && <Spinner />}
-          {!isLoading && products.length === 0 ? (
+          {!isLoading && filteredProducts.length === 0 ? (
             <div class="px-4 py-3 text-xs border text-center">
               <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-sm">
                 {" "}
@@ -56,7 +56,7 @@ export function Tables({ products, isLoading }) {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product, key) => {
+                {filteredProducts.map((product, key) => {
                   const { image, name, sku, price, category, quantity, _id } =
                     product;
                   // {
@@ -79,7 +79,7 @@ export function Tables({ products, isLoading }) {
                   //     "__v": 0
                   // }
                   const className = `py-3 px-5 ${
-                    key === products.length - 1
+                    key === filteredProducts.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
                   } `;
