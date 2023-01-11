@@ -3,14 +3,15 @@ import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const API_URL = `${BACKEND_URL}/api/products`;
+
 const token = localStorage.getItem("token");
-console.log(token);
+console.log("--token--", token);
 
 // Create new product
 let config = {
   headers: {
     "Content-Type": "multipart/form-data",
-    Authorization: "Bearer " + token,
+    Authorization: `Bearer ${token}`,
   },
 };
 const createProducts = async (formData) => {
@@ -19,14 +20,21 @@ const createProducts = async (formData) => {
 };
 // Get all product
 
-const getProduct = async () => {
-  const response = await axios.post(API_URL, config);
+const getProducts = async () => {
+  const token = await localStorage.getItem("token");
+  let config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL, config);
   return response.data;
 };
 
 const productService = {
   createProducts,
-  getProduct,
+  getProducts,
 };
 
 export default productService;
