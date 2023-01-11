@@ -60,7 +60,7 @@ const AddProduct = () => {
     const newData = {};
 
     console.log("pl", formData);
-    for (var pair of formData.entries()) {
+    for (let pair of formData.entries()) {
       console.log(`${pair[0]}: ${pair[1]}`);
       newData[pair[0]] = pair[1];
     }
@@ -74,7 +74,6 @@ const AddProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <h3>Add New Product</h3>
       <ProductForm
         product={product}
         productImage={productImage}

@@ -13,15 +13,20 @@ let config = {
     Authorization: "Bearer " + token,
   },
 };
-const createProduct = async (formData) => {
-  console.log(token, "token");
-  console.log("payload", formData);
+const createProducts = async (formData) => {
   const response = await axios.post(API_URL, formData, config);
+  return response.data;
+};
+// Get all product
+
+const getProduct = async () => {
+  const response = await axios.post(API_URL, config);
   return response.data;
 };
 
 const productService = {
-  createProduct,
+  createProducts,
+  getProduct,
 };
 
 export default productService;
