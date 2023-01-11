@@ -30,7 +30,7 @@ const Loader = () => {
 
 export const Spinner = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center pb-4">
       <RotatingLines
         strokeColor="red"
         strokeWidth="5"

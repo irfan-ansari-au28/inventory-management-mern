@@ -3,6 +3,7 @@ import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser"
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/features/auth/authSlice";
 import { getProducts } from "../../redux/features/product/productSlice";
+import Table from "./Table";
 
 const Dashboard = () => {
   useRedirectLoggedOutUser("/login");
@@ -21,7 +22,12 @@ const Dashboard = () => {
     }
   }, [isLoggedIn, isError, message, dispatch]);
 
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <div>Dashboard</div>
+      <Table products={products} isLoading={isLoading} />
+    </>
+  );
 };
 
 export default Dashboard;
