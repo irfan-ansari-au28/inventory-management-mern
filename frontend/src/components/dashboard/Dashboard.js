@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/features/auth/authSlice";
 import { getProducts } from "../../redux/features/product/productSlice";
 import Table from "./Table";
+import Search from "../Search/Search";
 
 const Dashboard = () => {
   useRedirectLoggedOutUser("/login");
@@ -25,6 +26,7 @@ const Dashboard = () => {
   return (
     <>
       <div>Dashboard</div>
+      <Search />
       <Table products={products} isLoading={isLoading} />
     </>
   );
