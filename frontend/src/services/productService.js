@@ -14,7 +14,7 @@ let config = {
     Authorization: `Bearer ${token}`,
   },
 };
-const createProducts = async (formData) => {
+const createProduct = async (formData) => {
   const response = await axios.post(API_URL, formData, config);
   return response.data;
 };
@@ -33,7 +33,7 @@ const getProducts = async () => {
 };
 
 const productService = {
-  createProducts,
+  createProduct,
   getProducts,
 };
 
