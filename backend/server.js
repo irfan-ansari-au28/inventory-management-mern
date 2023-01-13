@@ -21,9 +21,13 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [
+      "https://inventory-five-indol.vercel.app",
+      "http://localhost:3000",
+    ],
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
+    default: "https://inventory-five-indol.vercel.app",
   })
 );
 app.use(cookieParser());
