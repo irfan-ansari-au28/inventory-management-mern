@@ -4,17 +4,17 @@ import { BiImageAdd } from "react-icons/bi";
 const menu = [
   {
     title: "Dashboard",
-    icon: <FaTh />,
+    icon: <FaTh color="white" />,
     path: "/dashboard",
   },
   {
     title: "Add Product",
-    icon: <BiImageAdd />,
+    icon: <BiImageAdd color="white" />,
     path: "/add-product",
   },
   {
     title: "Account",
-    icon: <FaRegChartBar />,
+    icon: <FaRegChartBar color="white" />,
     children: [
       {
         title: "Profile",
@@ -28,7 +28,7 @@ const menu = [
   },
   {
     title: "Report Bug",
-    icon: <FaCommentAlt />,
+    icon: <FaCommentAlt color="white" />,
     path: "/contact-us",
   },
 ];

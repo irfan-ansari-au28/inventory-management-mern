@@ -9,7 +9,8 @@ import {
   FILTER_PRODUCTS,
   selectFilteredPoducts,
 } from "../../redux/features/product/filterSlice";
-import { Test } from "./Test";
+
+import ProductSummary from "../product/ProductSummary";
 
 const Dashboard = () => {
   useRedirectLoggedOutUser("/login");
@@ -40,6 +41,7 @@ const Dashboard = () => {
   return (
     <>
       <div>Dashboard</div>
+      <ProductSummary products={products} />
       <Search search={search} onChange={(e) => setSearch(e.target.value)} />
       <Table filteredProducts={filteredProducts} isLoading={isLoading} />
     </>

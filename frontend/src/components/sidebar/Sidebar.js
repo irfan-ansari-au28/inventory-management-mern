@@ -15,15 +15,19 @@ const Sidebar = ({ children }) => {
   return (
     <>
       <div
-        className={`${""} bg-gradient-to-br p-4 from-blue-gray-300 to-blue-gray-200 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
+        className={`${"p-4"} bg-gradient-to-br from-blue-gray-800 to-blue-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0`}
       >
         <div className="flex items-center justify-between">
           <div className="" style={{}} onClick={goHome}>
-            <RiProductHuntLine size={35} style={{ cursor: "pointer" }} />
+            <RiProductHuntLine
+              color="white"
+              size={35}
+              style={{ cursor: "pointer" }}
+            />
           </div>
 
           <div className="" style={{ cursor: "pointer" }}>
-            <HiMenuAlt3 />
+            <HiMenuAlt3 color="white" />
           </div>
         </div>
         {menu.map((item) => {
