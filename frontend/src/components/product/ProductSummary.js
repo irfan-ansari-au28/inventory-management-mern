@@ -9,8 +9,10 @@ import {
 } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  CALC_CATEGORY,
   CALC_OUTOFSTOCK,
   CALC_STORE_VALUE,
+  selectCategory,
   selectOutOfStock,
   selectTotalStoreValue,
 } from "../../redux/features/product/productSlice";
@@ -46,21 +48,23 @@ const ProductSummary = ({ products }) => {
   const dispatch = useDispatch();
   const outOfStock = useSelector(selectOutOfStock);
   const totalStoreValue = useSelector(selectTotalStoreValue);
+  const category = useSelector(selectCategory);
 
-  const x = 11;
-  const y = 12;
+  // const x = 11;
+  // const y = 12;
 
-  useEffect(() => {
-    const values = [outOfStock, totalStoreValue, x, y];
-    for (let i = 0; i++; i < statisticsCardsData.length) {
-      statisticsCardsData[i].value = values[i];
-      console.log("statisticsCardsData", statisticsCardsData);
-    }
-  }, [totalStoreValue, outOfStock]);
+  // useEffect(() => {
+  //   const values = [outOfStock, totalStoreValue, x, y];
+  //   for (let i = 0; i++; i < statisticsCardsData.length) {
+  //     statisticsCardsData[i].value = values[i];
+  //     console.log("statisticsCardsData", statisticsCardsData);
+  //   }
+  // }, [totalStoreValue, outOfStock]);
 
   useEffect(() => {
     dispatch(CALC_STORE_VALUE(products));
     dispatch(CALC_OUTOFSTOCK(products));
+    dispatch(CALC_CATEGORY(products));
   }, [dispatch, products]);
 
   return (
