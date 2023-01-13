@@ -4,17 +4,17 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const API_URL = `${BACKEND_URL}/api/products`;
 
-const token = localStorage.getItem("token");
-console.log("--token--", token);
-
 // Create new product
-let config = {
-  headers: {
-    "Content-Type": "multipart/form-data",
-    Authorization: `Bearer ${token}`,
-  },
-};
+
 const createProduct = async (formData) => {
+  const token = await localStorage.getItem("token");
+  console.log("--token--", token);
+  let config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
   const response = await axios.post(API_URL, formData, config);
   return response.data;
 };
@@ -60,7 +60,14 @@ const getProduct = async (id) => {
 
 // Update Product
 const updateProduct = async (id, formData) => {
-  const response = await axios.get(`${API_URL}/${id}`, formData, config);
+  const token = await localStorage.getItem("token");
+  let config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.patch(`${API_URL}/${id}`, formData, config);
   return response.data;
 };
 

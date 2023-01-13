@@ -1,17 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="max-w-2xl mx-auto">
-      <footer className="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-800">
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <ul className="flex flex-wrap items-center mb-6 sm:mb-0">
-            <li>About</li>
-            <li>Privacy Policy</li>
-            <li>Licensing</li>
-            <li>contact us</li>
-          </ul>
-        </div>
+    <div className="w-full mx-auto">
+      <footer className="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 text-gray-600">
+        <ul className="flex  items-center justify-end  ">
+          <Link to="">
+            <li className="ml-3 ">About</li>
+          </Link>
+          <Link>
+            <li className="ml-3 ">Privacy Policy</li>
+          </Link>
+          <Link>
+            <li className="ml-3 ">Licensing</li>
+          </Link>
+          <Link to="">
+            <li className="ml-3 ">contact us</li>
+          </Link>
+        </ul>
       </footer>
       <div></div>
     </div>

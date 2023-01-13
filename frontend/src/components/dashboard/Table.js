@@ -175,7 +175,7 @@ export function Tables({ filteredProducts, isLoading }) {
                           <Link to={`/product-detail/${_id}`} className="ml-1">
                             <GrView color="blue" />
                           </Link>
-                          <Link className="ml-1">
+                          <Link to={`/edit-product/${_id}`} className="ml-1">
                             <GrEdit color="green" />
                           </Link>
                           <Link className="ml-1">
