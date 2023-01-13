@@ -172,7 +172,7 @@ export function Tables({ filteredProducts, isLoading }) {
                       </td>
                       <td className={className}>
                         <div className="flex justify-between items-center ">
-                          <Link className="ml-1">
+                          <Link to={`/product-detail/${_id}`} className="ml-1">
                             <GrView color="blue" />
                           </Link>
                           <Link className="ml-1">
