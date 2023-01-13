@@ -58,11 +58,18 @@ const getProduct = async (id) => {
   return response.data;
 };
 
+// Update Product
+const updateProduct = async (id, formData) => {
+  const response = await axios.get(`${API_URL}/${id}`, formData, config);
+  return response.data;
+};
+
 const productService = {
   createProduct,
   getProducts,
   deleteProduct,
   getProduct,
+  updateProduct,
 };
 
 export default productService;

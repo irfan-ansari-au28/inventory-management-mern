@@ -115,7 +115,7 @@ const ProductDetail = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center justify-start ">
+                    <div className="flex items-center justify-center md:justify-start ">
                       Product Availability:
                       {stockStatus(product.quantity)}
                     </div>
