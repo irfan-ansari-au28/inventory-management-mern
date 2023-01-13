@@ -109,14 +109,15 @@ export function Tables({ filteredProducts, isLoading }) {
                   //     "updatedAt": "2023-01-10T16:38:53.277Z",
                   //     "__v": 0
                   // }
-                  const className = `py-3 px-5 ${
-                    key === filteredProducts.length - 1
+                  const className = `py-3 px-5  ${
+                    key === filteredProducts.length - 1 ||
+                    filteredProducts.length % 2 === 0
                       ? ""
                       : "border-b border-blue-gray-50"
                   } `;
 
                   return (
-                    <tr key={_id}>
+                    <tr key={_id} className="hover:bg-gray-100 cursor-pointer">
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
                           {key + 1}
