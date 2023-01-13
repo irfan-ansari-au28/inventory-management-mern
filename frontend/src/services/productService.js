@@ -45,10 +45,24 @@ const deleteProduct = async (id) => {
   return response.data;
 };
 
+// Get a Product
+const getProduct = async (id) => {
+  const token = await localStorage.getItem("token");
+  let config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(`${API_URL}/${id}`, config);
+  return response.data;
+};
+
 const productService = {
   createProduct,
   getProducts,
   deleteProduct,
+  getProduct,
 };
 
 export default productService;
