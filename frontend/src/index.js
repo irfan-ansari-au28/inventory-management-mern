@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./pages/addProduct/addProduct";
 import ProductDetail from "./components/product/ProductDetail";
+import EditProduct from "./pages/editProduct/EditProduct";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,16 @@ const router = createBrowserRouter([
       <Sidebar>
         <Layout>
           <ProductDetail />
+        </Layout>
+      </Sidebar>
+    ),
+  },
+  {
+    path: "/edit-product/:id",
+    element: (
+      <Sidebar>
+        <Layout>
+          <EditProduct />
         </Layout>
       </Sidebar>
     ),
