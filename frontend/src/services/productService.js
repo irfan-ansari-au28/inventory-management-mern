@@ -32,9 +32,23 @@ const getProducts = async () => {
   return response.data;
 };
 
+// Delete a Product
+const deleteProduct = async (id) => {
+  const token = await localStorage.getItem("token");
+  let config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.delete((API_URL + id, config));
+  return response.data;
+};
+
 const productService = {
   createProduct,
   getProducts,
+  deleteProduct,
 };
 
 export default productService;
