@@ -122,27 +122,29 @@ export function Tables({ filteredProducts, isLoading }) {
                           {key + 1}
                         </Typography>
                       </td>
-                      <td className={className}>
-                        <div className="flex items-center gap-4 text-xs ">
-                          <Avatar
-                            src={image?.filePath}
-                            alt={_id.slice(_id.length - 5, _id.length)}
-                            size="sm"
-                          />
-                          <div>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-semibold"
-                            >
-                              {name}
-                            </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
-                              {_id}
-                            </Typography>
+                      <Link to={`/product-detail/${_id}`}>
+                        <td className={className}>
+                          <div className="flex items-center gap-4 text-xs ">
+                            <Avatar
+                              src={image?.filePath}
+                              alt={_id.slice(_id.length - 5, _id.length)}
+                              size="sm"
+                            />
+                            <div>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-semibold"
+                              >
+                                {name}
+                              </Typography>
+                              <Typography className="text-xs font-normal text-blue-gray-500">
+                                {_id}
+                              </Typography>
+                            </div>
                           </div>
-                        </div>
-                      </td>
+                        </td>
+                      </Link>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
                           {category}
