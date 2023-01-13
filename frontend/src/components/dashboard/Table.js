@@ -21,7 +21,7 @@ export function Tables({ filteredProducts, isLoading }) {
   const dispatch = useDispatch();
 
   const delProduct = async (id) => {
-    console.log(id);
+    // console.log(id);
     await dispatch(deleteProduct(id));
     await dispatch(getProducts());
   };
@@ -53,8 +53,8 @@ export function Tables({ filteredProducts, isLoading }) {
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           {isLoading && <Spinner />}
           {!isLoading && filteredProducts.length === 0 ? (
-            <div class="px-4 py-3 text-xs border text-center">
-              <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-sm">
+            <div className="px-4 py-3 text-xs border text-center">
+              <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-sm">
                 {" "}
                 Product not found, Please add..
               </span>
@@ -123,29 +123,29 @@ export function Tables({ filteredProducts, isLoading }) {
                           {key + 1}
                         </Typography>
                       </td>
-                      <Link to={`/product-detail/${_id}`}>
-                        <td className={className}>
-                          <div className="flex items-center gap-4 text-xs ">
-                            <Avatar
-                              src={image?.filePath}
-                              alt={_id.slice(_id.length - 5, _id.length)}
-                              size="sm"
-                            />
-                            <div>
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-semibold"
-                              >
-                                {name}
-                              </Typography>
-                              <Typography className="text-xs font-normal text-blue-gray-500">
-                                {_id}
-                              </Typography>
-                            </div>
+
+                      <td className={className}>
+                        <div className="flex items-center gap-4 text-xs ">
+                          <Avatar
+                            src={image?.filePath}
+                            alt={_id.slice(_id.length - 5, _id.length)}
+                            size="sm"
+                          />
+                          <div>
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-semibold"
+                            >
+                              {name}
+                            </Typography>
+                            <Typography className="text-xs font-normal text-blue-gray-500">
+                              {_id}
+                            </Typography>
                           </div>
-                        </td>
-                      </Link>
+                        </div>
+                      </td>
+
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
                           {category}

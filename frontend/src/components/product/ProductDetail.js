@@ -75,7 +75,7 @@ const ProductDetail = () => {
                     <div className="flex flex-wrap mb-6">
                       <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
                         <p className="flex items-center justify-center md:justify-start">
-                          <span class="px-2 py-1 text-sm text-gray-700 bg-green-100 rounded-full">
+                          <span className="px-2 py-1 text-sm text-gray-700 bg-green-100 rounded-full">
                             {" "}
                             SKU : {product.sku}
                           </span>
@@ -83,7 +83,7 @@ const ProductDetail = () => {
                       </div>
                       <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
                         <p className="flex items-center justify-center md:justify-start">
-                          <span class="px-2 py-1 text-sm text-gray-700 bg-yellow-100 rounded-full">
+                          <span className="px-2 py-1 text-sm text-gray-700 bg-yellow-100 rounded-full">
                             {" "}
                             Category : {product.category}
                           </span>
@@ -91,7 +91,7 @@ const ProductDetail = () => {
                       </div>
                       <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
                         <p className="flex items-center justify-center md:justify-start">
-                          <span class="px-2 py-1 text-sm text-gray-700 bg-blue-gray-100 rounded-full">
+                          <span className="px-2 py-1 text-sm text-gray-700 bg-blue-gray-100 rounded-full">
                             {" "}
                             Price : ${product.price}
                           </span>
@@ -99,7 +99,7 @@ const ProductDetail = () => {
                       </div>
                       <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
                         <p className="flex items-center justify-center md:justify-start">
-                          <span class="px-2 py-1 text-sm text-gray-700 bg-red-100 rounded-full">
+                          <span className="px-2 py-1 text-sm text-gray-700 bg-red-100 rounded-full">
                             {" "}
                             Quantity in stock : {product.quantity}
                           </span>
@@ -107,7 +107,7 @@ const ProductDetail = () => {
                       </div>
                       <div className="w-full lg:w-6/12 xl:w-4/12 mb-4">
                         <p className="flex items-center justify-center md:justify-start">
-                          <span class="px-2 py-1 text-sm text-gray-700 bg-orange-100 rounded-full">
+                          <span className="px-2 py-1 text-sm text-gray-700 bg-orange-100 rounded-full">
                             {" "}
                             Total Value in stock : $
                             {product.price * product.quantity}

@@ -34,9 +34,9 @@ const AddProduct = () => {
 
   const handleImageChange = (e) => {
     setProductImage(e.target.files[0]);
-    console.log("productImage", productImage);
+    // console.log("productImage", productImage);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
-    console.log("imagePreview", imagePreview);
+    // console.log("imagePreview", imagePreview);
   };
 
   const generateKSKU = (category) => {
@@ -59,12 +59,12 @@ const AddProduct = () => {
 
     const newData = {};
 
-    console.log("pl", formData);
+    // console.log("pl", formData);
     for (let pair of formData.entries()) {
       console.log(`${pair[0]}: ${pair[1]}`);
       newData[pair[0]] = pair[1];
     }
-    console.log("new", newData);
+    // console.log("new", newData);
 
     await dispatch(createProduct(newData));
 

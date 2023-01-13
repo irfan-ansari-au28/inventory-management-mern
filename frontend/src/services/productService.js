@@ -8,7 +8,7 @@ const API_URL = `${BACKEND_URL}/api/products`;
 
 const createProduct = async (formData) => {
   const token = await localStorage.getItem("token");
-  console.log("--token--", token);
+  // console.log("--token--", token);
   let config = {
     headers: {
       "Content-Type": "multipart/form-data",
