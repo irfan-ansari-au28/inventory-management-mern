@@ -9,8 +9,39 @@ import {
 import { GrView, GrEdit, GrTrash } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { Spinner } from "../../loader/Loader";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { useDispatch } from "react-redux";
+import {
+  deleteProduct,
+  getProducts,
+} from "../../redux/features/product/productSlice";
 
 export function Tables({ filteredProducts, isLoading }) {
+  const dispatch = useDispatch();
+
+  const delProduct = async (id) => {
+    console.log(id);
+    await dispatch(deleteProduct(id));
+    await dispatch(getProducts());
+  };
+
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: "Delete Product",
+      message: "Are you sure you want to delete this product.",
+      buttons: [
+        {
+          label: "Delete",
+          onClick: () => delProduct(id),
+        },
+        {
+          label: "Cancel",
+          // onClick: () => alert('Click No')
+        },
+      ],
+    });
+  };
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
@@ -148,7 +179,10 @@ export function Tables({ filteredProducts, isLoading }) {
                             <GrEdit color="green" />
                           </Link>
                           <Link className="ml-1">
-                            <GrTrash color="red" />
+                            <GrTrash
+                              color="red"
+                              onClick={() => confirmDelete(_id)}
+                            />
                           </Link>
                         </div>
                       </td>
