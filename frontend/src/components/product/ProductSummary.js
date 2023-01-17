@@ -76,7 +76,7 @@ const ProductSummary = ({ products }) => {
       color: "orange",
       icon: cartIcon,
       title: "Total Products",
-      value: "4",
+      value: products.length,
       footer: {
         color: "text-green-500",
         value: "+55%",
