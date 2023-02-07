@@ -60,8 +60,8 @@ const Register = () => {
     try {
       const data = await registerUser(userData);
       // console.log(data);
-      await dispatch(SET_LOGIN(true));
-      await dispatch(SET_NAME(data.name));
+      // await dispatch(SET_LOGIN(true));
+      // await dispatch(SET_NAME(data.name));
       navigate("/login");
       setIsLoading(false);
     } catch (error) {
